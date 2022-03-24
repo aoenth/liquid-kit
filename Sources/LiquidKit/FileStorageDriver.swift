@@ -9,7 +9,7 @@
 public protocol FileStorageDriver {
 
     /// creates a FileStorage object with a given context
-    func makeStorage(with context: FileStorageContext) -> FileStorage
+    func makeStorage(with context: FileStorageContext) async -> FileStorage
     
     /// shuts down the driver
     func shutdown()

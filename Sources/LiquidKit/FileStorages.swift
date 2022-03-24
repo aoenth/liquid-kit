@@ -104,7 +104,7 @@ public final class FileStorages {
             driver = existing
         }
         else {
-            let new = configuration.makeDriver(for: self)
+            let new = await configuration.makeDriver(for: self)
             drivers[id] = new
             driver = new
         }

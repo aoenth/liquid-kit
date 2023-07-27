@@ -87,7 +87,7 @@ public final class FileStorages {
     }
     
     /// returns a file storage for a given identifier using a logger and an event loop object
-    public func fileStorage(_ id: FileStorageID? = nil, logger: Logger, on eventLoop: EventLoop) async -> FileStorage? {
+    public func fileStorage(_ id: FileStorageID? = nil, logger: Logger, on eventLoop: EventLoop) -> FileStorage? {
         lock.lock()
         defer { lock.unlock() }
         let id = id ?? requireDefaultID()
@@ -104,11 +104,11 @@ public final class FileStorages {
             driver = existing
         }
         else {
-            let new = await configuration.makeDriver(for: self)
+            let new = configuration.makeDriver(for: self)
             drivers[id] = new
             driver = new
         }
-        return await driver.makeStorage(with: context)
+        return driver.makeStorage(with: context)
     }
 
     /// reinitialize a file storage driver for a given identifier

@@ -9,5 +9,5 @@
 public protocol FileStorageConfiguration {
 
     /// creates a new driver using the FileStorages object, driver will be stored in that storage
-    func makeDriver(for: FileStorages) async -> FileStorageDriver
+    func makeDriver(for: FileStorages) -> FileStorageDriver
 }
